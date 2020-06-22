@@ -114,9 +114,6 @@ Foam::ParticleDeposition<CloudType>::ParticleDeposition
     CloudFunctionObject<CloudType>(pe),
     PDRPtr_(nullptr),
     patchIDs_(pe.patchIDs_)
-//    p_(pe.p_),
-//    psi_(pe.psi_),
-//    K_(pe.K_)
 {}
 
 
@@ -188,16 +185,6 @@ void Foam::ParticleDeposition<CloudType>::postPatch
         scalar& PDR = PDRPtr_->boundaryFieldRef()[patchi][patchFacei];
 
         PDR += coeff;
-/*
-        if (tan(alpha) < K_/6.0)
-        {
-            PDR += coeff*(sin(2.0*alpha) - 6.0/K_*sqr(sin(alpha)));
-        }
-        else
-        {
-            PDR += coeff*(K_*sqr(cos(alpha))/6.0);
-        }
-*/        
     }
 }
 
