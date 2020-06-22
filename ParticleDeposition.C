@@ -76,9 +76,6 @@ Foam::ParticleDeposition<CloudType>::ParticleDeposition
     CloudFunctionObject<CloudType>(dict, owner, modelName, typeName),
     PDRPtr_(nullptr),
     patchIDs_()
-//    p_(this->coeffDict().getScalar("p")),
-//    psi_(this->coeffDict().template lookupOrDefault<scalar>("psi", 2.0)),
-//    K_(this->coeffDict().template lookupOrDefault<scalar>("K", 2.0))
 {
     const wordList allPatchNames(owner.mesh().boundaryMesh().names());
     const wordReList patchNames(this->coeffDict().lookup("patches"));
