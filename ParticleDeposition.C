@@ -179,7 +179,7 @@ void Foam::ParticleDeposition<CloudType>::postPatch
             return;
         }
 
-        const scalar coeff = p.nParticle()*p.mass();
+        const scalar coeff = p.nParticle()
 
         const label patchFacei = pp.whichFace(p.face());
         scalar& PDR = PDRPtr_->boundaryFieldRef()[patchi][patchFacei];
