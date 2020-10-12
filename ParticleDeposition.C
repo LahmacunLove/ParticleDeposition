@@ -133,7 +133,7 @@ void Foam::ParticleDeposition<CloudType>::preEvolve()
             (
                 IOobject
                 (
-                    this->owner().name() + "deposedParticles",
+                    this->owner().name() + "DeposedParticles",
                     mesh.time().timeName(),
                     mesh,
                     IOobject::READ_IF_PRESENT,

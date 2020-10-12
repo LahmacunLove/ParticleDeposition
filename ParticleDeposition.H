@@ -85,7 +85,7 @@ protected:
 public:
 
     //- Runtime type information
-    TypeName("ParticleDeposition");
+    TypeName("particleDeposition");
 
 
     // Constructors
