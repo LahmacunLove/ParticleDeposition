@@ -26,12 +26,12 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "particleDeposition.H"
+#include "ParticleDeposition.H"
 
 // * * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * //
 
 template<class CloudType>
-Foam::label Foam::particleDeposition<CloudType>::applyToPatch
+Foam::label Foam::ParticleDeposition<CloudType>::applyToPatch
 (
     const label globalPatchi
 ) const
@@ -49,7 +49,7 @@ Foam::label Foam::particleDeposition<CloudType>::applyToPatch
 
 
 template<class CloudType>
-void Foam::particleDeposition<CloudType>::write()
+void Foam::ParticleDeposition<CloudType>::write()
 {
     if (PDRPtr_.valid())
     {
@@ -66,7 +66,7 @@ void Foam::particleDeposition<CloudType>::write()
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 template<class CloudType>
-Foam::particleDeposition<CloudType>::particleDeposition
+Foam::ParticleDeposition<CloudType>::ParticleDeposition
 (
     const dictionary& dict,
     CloudType& owner,
@@ -103,9 +103,9 @@ Foam::particleDeposition<CloudType>::particleDeposition
 
 
 template<class CloudType>
-Foam::particleDeposition<CloudType>::particleDeposition
+Foam::ParticleDeposition<CloudType>::ParticleDeposition
 (
-    const particleDeposition<CloudType>& pe
+    const ParticleDeposition<CloudType>& pe
 )
 :
     CloudFunctionObject<CloudType>(pe),
@@ -117,7 +117,7 @@ Foam::particleDeposition<CloudType>::particleDeposition
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 template<class CloudType>
-void Foam::particleDeposition<CloudType>::preEvolve()
+void Foam::ParticleDeposition<CloudType>::preEvolve()
 {
     if (PDRPtr_.valid())
     {
@@ -148,7 +148,7 @@ void Foam::particleDeposition<CloudType>::preEvolve()
 
 
 template<class CloudType>
-void Foam::particleDeposition<CloudType>::postPatch
+void Foam::ParticleDeposition<CloudType>::postPatch
 (
     const parcelType& p,
     const polyPatch& pp,

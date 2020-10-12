@@ -1,4 +1,4 @@
-/*---------------------------------------------------------------------------*\
+*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
@@ -24,7 +24,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::particleDeposition
+    Foam::ParticleDeposition
 
 Group
     grpLagrangianIntermediateFunctionObjects
@@ -33,12 +33,12 @@ Description
     Creates particle deposition field, deposedParticles
 
 SourceFiles
-    particleDeposition.C
+    ParticleDeposition.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef particleDeposition_H
-#define particleDeposition_H
+#ifndef ParticleDeposition_H
+#define ParticleDeposition_H
 
 #include "CloudFunctionObject.H"
 #include "volFields.H"
@@ -49,11 +49,11 @@ namespace Foam
 {
 
 /*---------------------------------------------------------------------------*\
-                       Class particleDeposition Declaration
+                       Class ParticleDeposition Declaration
 \*---------------------------------------------------------------------------*/
 
 template<class CloudType>
-class particleDeposition
+class ParticleDeposition
 :
     public CloudFunctionObject<CloudType>
 {
@@ -85,13 +85,13 @@ protected:
 public:
 
     //- Runtime type information
-    TypeName("particleDeposition");
+    TypeName("ParticleDeposition");
 
 
     // Constructors
 
         //- Construct from dictionary
-        particleDeposition
+        ParticleDeposition
         (
             const dictionary& dict,
             CloudType& owner,
@@ -99,20 +99,20 @@ public:
         );
 
         //- Construct copy
-        particleDeposition(const particleDeposition<CloudType>& pe);
+        ParticleDeposition(const ParticleDeposition<CloudType>& pe);
 
         //- Construct and return a clone
         virtual autoPtr<CloudFunctionObject<CloudType>> clone() const
         {
             return autoPtr<CloudFunctionObject<CloudType>>
             (
-                new particleDeposition<CloudType>(*this)
+                new ParticleDeposition<CloudType>(*this)
             );
         }
 
 
     //- Destructor
-    virtual ~particleDeposition() = default;
+    virtual ~ParticleDeposition() = default;
 
 
     // Member Functions
@@ -139,7 +139,7 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #ifdef NoRepository
-    #include "particleDeposition.C"
+    #include "ParticleDeposition.C"
 #endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
