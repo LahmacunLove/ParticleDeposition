@@ -24,21 +24,21 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::ParticleDeposition
+    Foam::particleDeposition
 
 Group
     grpLagrangianIntermediateFunctionObjects
 
 Description
-    Creates particle deposition field, PDR
+    Creates particle deposition field, deposedParticles
 
 SourceFiles
-    ParticleDeposition.C
+    particleDeposition.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef ParticleDeposition_H
-#define ParticleDeposition_H
+#ifndef particleDeposition_H
+#define particleDeposition_H
 
 #include "CloudFunctionObject.H"
 #include "volFields.H"
@@ -49,11 +49,11 @@ namespace Foam
 {
 
 /*---------------------------------------------------------------------------*\
-                       Class ParticleDeposition Declaration
+                       Class particleDeposition Declaration
 \*---------------------------------------------------------------------------*/
 
 template<class CloudType>
-class ParticleDeposition
+class particleDeposition
 :
     public CloudFunctionObject<CloudType>
 {
@@ -70,16 +70,6 @@ class ParticleDeposition
 
         //- List of patch indices to post-process
         labelList patchIDs_;
-
-        //- Plastic flow stress - typical metal value = 2.7 GPa
-//        scalar p_;
-
-        //- Ratio between depth of contact and length of cut - default=2
-//        scalar psi_;
-
-        //- Ratio of normal and tangential forces - default=2
-//        scalar K_;
-
 
 protected:
 
@@ -101,7 +91,7 @@ public:
     // Constructors
 
         //- Construct from dictionary
-        ParticleDeposition
+        particleDeposition
         (
             const dictionary& dict,
             CloudType& owner,
@@ -109,20 +99,20 @@ public:
         );
 
         //- Construct copy
-        ParticleDeposition(const ParticleDeposition<CloudType>& pe);
+        particleDeposition(const particleDeposition<CloudType>& pe);
 
         //- Construct and return a clone
         virtual autoPtr<CloudFunctionObject<CloudType>> clone() const
         {
             return autoPtr<CloudFunctionObject<CloudType>>
             (
-                new ParticleDeposition<CloudType>(*this)
+                new particleDeposition<CloudType>(*this)
             );
         }
 
 
     //- Destructor
-    virtual ~ParticleDeposition() = default;
+    virtual ~particleDeposition() = default;
 
 
     // Member Functions
@@ -149,7 +139,7 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #ifdef NoRepository
-    #include "ParticleDeposition.C"
+    #include "particleDeposition.C"
 #endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

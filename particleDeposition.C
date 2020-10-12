@@ -26,12 +26,12 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "ParticleDeposition.H"
+#include "particleDeposition.H"
 
 // * * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * //
 
 template<class CloudType>
-Foam::label Foam::ParticleDeposition<CloudType>::applyToPatch
+Foam::label Foam::particleDeposition<CloudType>::applyToPatch
 (
     const label globalPatchi
 ) const
@@ -49,7 +49,7 @@ Foam::label Foam::ParticleDeposition<CloudType>::applyToPatch
 
 
 template<class CloudType>
-void Foam::ParticleDeposition<CloudType>::write()
+void Foam::particleDeposition<CloudType>::write()
 {
     if (PDRPtr_.valid())
     {
@@ -66,7 +66,7 @@ void Foam::ParticleDeposition<CloudType>::write()
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 template<class CloudType>
-Foam::ParticleDeposition<CloudType>::ParticleDeposition
+Foam::particleDeposition<CloudType>::particleDeposition
 (
     const dictionary& dict,
     CloudType& owner,
@@ -103,9 +103,9 @@ Foam::ParticleDeposition<CloudType>::ParticleDeposition
 
 
 template<class CloudType>
-Foam::ParticleDeposition<CloudType>::ParticleDeposition
+Foam::particleDeposition<CloudType>::particleDeposition
 (
-    const ParticleDeposition<CloudType>& pe
+    const particleDeposition<CloudType>& pe
 )
 :
     CloudFunctionObject<CloudType>(pe),
@@ -117,7 +117,7 @@ Foam::ParticleDeposition<CloudType>::ParticleDeposition
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 template<class CloudType>
-void Foam::ParticleDeposition<CloudType>::preEvolve()
+void Foam::particleDeposition<CloudType>::preEvolve()
 {
     if (PDRPtr_.valid())
     {
@@ -133,14 +133,14 @@ void Foam::ParticleDeposition<CloudType>::preEvolve()
             (
                 IOobject
                 (
-                    this->owner().name() + "PDR",
+                    this->owner().name() + "deposedParticles",
                     mesh.time().timeName(),
                     mesh,
                     IOobject::READ_IF_PRESENT,
                     IOobject::NO_WRITE
                 ),
                 mesh,
-                dimensionedScalar(dimVolume, Zero)
+                dimensionedScalar(dimensionSet(0, 0, -2, 0, 0), Zero)
             )
         );
     }
@@ -148,7 +148,7 @@ void Foam::ParticleDeposition<CloudType>::preEvolve()
 
 
 template<class CloudType>
-void Foam::ParticleDeposition<CloudType>::postPatch
+void Foam::particleDeposition<CloudType>::postPatch
 (
     const parcelType& p,
     const polyPatch& pp,
